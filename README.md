@@ -48,6 +48,36 @@
 
 ## Bonus: Interactive Clinical Dashboard
 
+---
+
+## How to Run (100% Reproducible)
+
+```bash
+# 1. Start PostgreSQL
+docker run -d --name pg -e POSTGRES_PASSWORD=didi20189@ -p 5432:5432 postgres
+
+# 2. Create DB
+psql -U postgres -c "CREATE DATABASE Efiche_assessment1;"
+
+# 3. Load ODS
+psql -U postgres -d Efiche_assessment1 -f 01_schema.sql
+
+# 4. Generate patients
+python 02_synthetic_patients.py
+
+# 5. Run pipeline
+python part2_pipeline.py
+
+# 6. Load DWH
+psql -U postgres -d Efiche_assessment1 -f 03_dwh_schema.sql
+psql -U postgres -d Efiche_assessment1 -f part3_etl.py
+
+# 7. Run analytics
+psql -U postgres -d Efiche_assessment1 -f 04_analytics.sql
+
+# 8. Launch dashboard
+python dashboard.py
+
 - **Built with Python + Plotly**  
 - **KPIs at top**: Total encounters, patients, avg studies  
 - **4 required charts** + bonus text clustering  
