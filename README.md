@@ -54,4 +54,4 @@
 - **Fully interactive**: hover, zoom, export  
 - **Self-contained HTML** — no dependencies
 
-**Open `efiche_clinical_dashboard.html` in any browser**
+**Open `interactive dashboard.html` in any browser**
