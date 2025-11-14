@@ -50,7 +50,7 @@
 
 ---
 
-## How to Run (100% Reproducible)
+## How to Run 
 
 ```bash
 # 1. Start PostgreSQL
